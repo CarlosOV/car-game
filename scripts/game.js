@@ -11,7 +11,8 @@ window.addEventListener("load",function() {
                   scaleToFit: true
               })                           // Add a canvas element onto the page
               .controls()                        // Add in default controls (keyboard, buttons)
-              .touch(); 
+              .touch()
+              .enableSound(); 
     
     Q.SPRITE_PLAYER = 2;
     Q.SPRITE_ENEMY = 4;
@@ -25,17 +26,29 @@ window.addEventListener("load",function() {
             asset: "cuadrado.png"
         }));
     
-    stage.insert(new Q.EnemyThrower());
+    //stage.insert(new Q.EnemyThrower());
     
-    var player = new Q.CarPlayer();  
+    var player = new Q.CarPlayer();
     stage.insert(player);
+    console.log("holi")
+    stage.add("viewport");
+    player.doit();
     player.play("run");
     
-    stage.add("viewport");
+    
         
     });
     
-    Q.load("car.json, car.png, cuadrado.png, enemy.json", function(){
+    var assets = [
+        "car.json",
+        " car.png",
+        "cuadrado.png",
+        "enemy.json",
+        "alarm_lock.mp3",
+        "alarm_lock.ogg"
+        ]
+    
+    Q.load(assets.join(", "), function(){
        Q.compileSheets("car.png", "car.json");
        Q.compileSheets("car.png", "enemy.json");
        

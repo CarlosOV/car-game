@@ -15,20 +15,13 @@ Quintus.PlayerCar = function(Q){
             speedX:0
             });
             this.add('2d, animation');
+            //this.stage.viewport.centerOn(0 ,this.p.y-240 );
             Q.audio.play('alarm_lock.mp3');
-            var that = this;
-            setTimeout(
-                function(){that.initPropierties()},1000);
-        },
-        doit:function(){
-            this.stage.viewport.centerOn(0 ,this.p.y-240 );
+            //this.on("step","updatestep");
         },
         initPropierties:function(){
-            console.log("holi boli")
-            this.on("step","updatestep");
-            this.stage.insert(new Q.EnemyThrower());
             var p = this.p;
-            p.vy =  -200;
+            p.vx =  -200;
             p.speedX = 200;
         },
         updatestep:function(dt){
